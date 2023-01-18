@@ -8,7 +8,9 @@ import App from './App';
 import Events from './pages/Events';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 import Ranking from './pages/Ranking';
+import Register from './pages/Register';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,11 +18,52 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="home" element={<Home />} />
           <Route path="ranking" element={<Ranking />} />
           <Route path="events" element={<Events />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
 );
+
+/* const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    children: [
+      {
+        path: '',
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
+        path: 'dashboard',
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: 'home',
+            element: <Home />,
+          },
+          {
+            path: 'ranking',
+            element: <Ranking />,
+          },
+          {
+            path: 'events',
+            element: <Events />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
+]); */
