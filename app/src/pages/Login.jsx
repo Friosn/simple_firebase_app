@@ -12,6 +12,7 @@ const Login = () => {
       }}
       noValidate
       autoComplete="off"
+      className="login"
     >
       <Box maxWidth="20rem">
         <img
