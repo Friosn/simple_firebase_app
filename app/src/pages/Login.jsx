@@ -1,24 +1,17 @@
-import { Link, TextField } from '@mui/material';
+import { Button, FormControl, FormControlLabel, Link, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import React from 'react';
 
-import theme from '../theme';
+/* import theme from '../theme'; */
 
 const Login = () => {
   return (
     <Box
-      component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
       }}
       noValidate
       autoComplete="off"
-      display="flex"
-      flexDirection="column"
-      gap="4rem"
-      justifyContent="center"
-      alignItems="center"
-      padding="1rem"
     >
       <Box maxWidth="20rem">
         <img
@@ -27,10 +20,10 @@ const Login = () => {
           className="loginLogo"
         />
       </Box>
-      <div>
+      <FormControl>
         <TextField required id="outlined-required" label="Email" />
         <TextField required id="outlined-required" label="Password" />
-      </div>
+      </FormControl>
     </Box>
   );
 };
