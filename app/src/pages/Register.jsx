@@ -1,7 +1,22 @@
-import { Box, Button, FormControl, Link, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  Link,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
 import React from 'react';
 
 const Register = () => {
+  const [gender, setGender] = React.useState('');
+
+  const handleChange = (event) => {
+    setGender(event.target.value);
+  };
+
   return (
     <Box noValidate autoComplete="off" className="login">
       <Box maxWidth="20rem">
@@ -15,7 +30,21 @@ const Register = () => {
         <TextField required id="outlined-required" label="Nombre" />
         <TextField required id="outlined-required" label="Email" />
         <TextField required id="outlined-required" label="Contraseña" />
-        <TextField required id="outlined-required" label="Password" />
+        <FormControl className="loginForm">
+          <InputLabel id="select-gender">Género</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={gender}
+            label="Género"
+            onChange={handleChange}
+          >
+            <MenuItem value={'Hombre'}>Hombre</MenuItem>
+            <MenuItem value={'Mujer'}>Mujer</MenuItem>
+            <MenuItem value={'Otro'}>Otro</MenuItem>
+          </Select>
+        </FormControl>
+
         <Button variant="contained" sx={{ backgroundColor: 'black' }}>
           Register
         </Button>
