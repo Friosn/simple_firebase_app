@@ -154,6 +154,7 @@ html,
   a:link, a:visited, a:active {
     text-decoration:none;
 }
+---------------------------
 
 :root {
   --primary: white;
@@ -213,6 +214,7 @@ button:focus-visible {
   }
 }
 
+
 .loginLogo {
   max-width: 20rem;
   max-height: 20rem;
@@ -222,7 +224,11 @@ button:focus-visible {
   flex-wrap: wrap;
   flex-direction: column;
   max-width: 40rem;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   justify-content: center;
+}
+.loginForm {
+  
+  gap: 1rem;
 }
