@@ -41,7 +41,6 @@ const Register = () => {
           >
             <MenuItem value={'Hombre'}>Hombre</MenuItem>
             <MenuItem value={'Mujer'}>Mujer</MenuItem>
-            <MenuItem value={'Otro'}>Otro</MenuItem>
           </Select>
         </FormControl>
 
