@@ -11,8 +11,10 @@ const Register = () => {
           className="loginLogo"
         />
       </Box>
-      <FormControl className="loginForm" sx={{ margin: '1rem', gap: '1.2rem' }}>
+      <FormControl className="loginForm" sx={{ margin: '1rem', gap: '0.8rem' }}>
+        <TextField required id="outlined-required" label="Nombre" />
         <TextField required id="outlined-required" label="Email" />
+        <TextField required id="outlined-required" label="Contraseña" />
         <TextField required id="outlined-required" label="Password" />
         <Button variant="contained" sx={{ backgroundColor: 'black' }}>
           Register
