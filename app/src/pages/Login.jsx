@@ -1,10 +1,17 @@
-import { Button, FormControl, Link, TextField } from '@mui/material';
+import { Button, FormControl, Link, TextareaAutosize, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import React, { useState } from 'react';
 
 import firebase from '../config/firebase';
 
 /* import theme from '../theme'; */
+
+/* const auth = getAuth(); */
 
 const Login = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -61,15 +68,16 @@ const Login = ({ onLogin }) => {
         />
       </Box>
       <Box as="form" onSubmit={handleSubmit} marginTop={4}>
-        <FormControl id="email" sx={{ margin: '1rem', gap: '1.2rem' }} isRequired>
+        <FormControl id="email" sx={{ margin: '1rem', gap: '1.2rem' }} required>
           <TextField type="email" required id="outlined-required" label="Email" />
         </FormControl>
-        <FormControl id="password" sx={{ margin: '1rem', gap: '1.2rem' }} isRequired>
+        <FormControl id="password" sx={{ margin: '1rem', gap: '1.2rem' }} required>
           <TextField type="password" required id="outlined-required" label="Password" />
         </FormControl>
         <Button type="submit" variant="contained" sx={{ backgroundColor: 'black' }}>
           {isLogin ? 'Iniciar sesión' : 'Login'}
         </Button>
+        {error ? <TextareaAutosize color="red">{error}</TextareaAutosize> : null}
       </Box>
       <p>Aún no eres un usuario?</p>
       <Link href="/register">Registrate ahora</Link>
