@@ -2,10 +2,13 @@ import { Button, FormControl, Link, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import React, { useState } from 'react';
 
+import firebase from '../config/firebase';
+
 /* import theme from '../theme'; */
 
 const Login = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,7 +16,39 @@ const Login = ({ onLogin }) => {
     const email = e.target[0].value;
     const password = e.target[1].value;
 
-    onLogin({ email, password });
+    setError(null);
+
+    if (!isLogin) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const newUser = {
+            id: userCredential.user.uid,
+            email: userCredential.user.email,
+          };
+          onLogin(newUser);
+        })
+        .catch((err) => {
+          console.log('Error createUserWithEmailAndPassword:', err.message);
+          setError(err.message);
+        });
+    } else {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const newUser = {
+            id: userCredential.user.uid,
+            email: userCredential.user.email,
+          };
+          onLogin(newUser);
+        })
+        .catch((err) => {
+          console.log('Error signInWithEmailAndPassword:', err.message);
+          setError(err.message);
+        });
+    }
   }
 
   return (
@@ -26,13 +61,15 @@ const Login = ({ onLogin }) => {
         />
       </Box>
       <Box as="form" onSubmit={handleSubmit} marginTop={4}>
-        <FormControl className="loginForm" sx={{ margin: '1rem', gap: '1.2rem' }}>
+        <FormControl id="email" sx={{ margin: '1rem', gap: '1.2rem' }} isRequired>
           <TextField type="email" required id="outlined-required" label="Email" />
-          <TextField type="password" required id="outlined-required" label="Password" />
-          <Button type="submit" variant="contained" sx={{ backgroundColor: 'black' }}>
-            {isLogin ? 'Iniciar sesión' : 'Login'}
-          </Button>
         </FormControl>
+        <FormControl id="password" sx={{ margin: '1rem', gap: '1.2rem' }} isRequired>
+          <TextField type="password" required id="outlined-required" label="Password" />
+        </FormControl>
+        <Button type="submit" variant="contained" sx={{ backgroundColor: 'black' }}>
+          {isLogin ? 'Iniciar sesión' : 'Login'}
+        </Button>
       </Box>
       <p>Aún no eres un usuario?</p>
       <Link href="/register">Registrate ahora</Link>
