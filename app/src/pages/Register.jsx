@@ -8,11 +8,16 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Register = () => {
   const [gender, setGender] = React.useState('');
-
+  const [showPass, setShowPass] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
   const handleChange = (event) => {
     setGender(event.target.value);
   };

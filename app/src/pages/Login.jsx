@@ -1,19 +1,17 @@
 import { Button, FormControl, Link, TextareaAutosize, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
-import {
+/* import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
-} from 'firebase/auth';
+} from 'firebase/auth'; */
 import React, { useState } from 'react';
-
-import firebase from '../config/firebase';
 
 /* import theme from '../theme'; */
 
 /* const auth = getAuth(); */
 
-const Login = ({ onLogin }) => {
+/* const Login = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
 
@@ -86,3 +84,4 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
+ */
