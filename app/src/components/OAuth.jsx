@@ -1,7 +1,8 @@
-import { Alert } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
 import React from 'react';
+import { FcGoogle } from 'react-icons/fc';
 
 import { db } from '../firebase';
 const OAuth = () => {
@@ -30,7 +31,12 @@ const OAuth = () => {
       <Alert severity="error">Impossible to log in</Alert>;
     }
   };
-  return <div>OAuth</div>;
+  return (
+    <Button variant="contained" type="button" onClick={onGoogleClick}>
+      <FcGoogle />
+      Continue with Google
+    </Button>
+  );
 };
 
 export default OAuth;

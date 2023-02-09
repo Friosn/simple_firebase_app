@@ -1,17 +1,17 @@
-import { Button, FormControl, Link, TextareaAutosize, TextField } from '@mui/material';
+/* import { Button, FormControl, Link, TextareaAutosize, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
-/* import {
+import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
-} from 'firebase/auth'; */
+} from 'firebase/auth';
 import React, { useState } from 'react';
 
-/* import theme from '../theme'; */
+import theme from '../theme';
 
-/* const auth = getAuth(); */
+const auth = getAuth();
 
-/* const Login = ({ onLogin }) => {
+const Login = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
 
