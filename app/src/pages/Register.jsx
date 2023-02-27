@@ -82,53 +82,70 @@ const Register = () => {
           className="loginLogo"
         />
       </Box>
-      <FormControl onSubmit={onSubmit} className="loginForm" sx={{ m: 1, width: '25ch' }}>
-        <TextField required id="name" label="Nombre" value={name} onChange={onChange} />
-      </FormControl>
-      <FormControl onSubmit={onSubmit} className="loginForm" sx={{ m: 1, width: '25ch' }}>
-        <TextField required id="email" label="Email" value={email} onChange={onChange} />
-      </FormControl>
-      <FormControl sx={{ m: 1, width: '25ch', height: '3rem' }} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={showPassword ? 'text' : 'password'}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-        />
-      </FormControl>
-      <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-        <InputLabel htmlFor="gender">Género</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="gender"
-          value={gender}
-          onChange={handleChange}
-          label="Género"
-          required
-          placeholder="Género"
+      <form>
+        <FormControl
+          onSubmit={onSubmit}
+          className="loginForm"
+          sx={{ m: 1, width: '25ch' }}
         >
-          <MenuItem value={'Hombre'}>Hombre</MenuItem>
-          <MenuItem value={'Mujer'}>Mujer</MenuItem>
-        </Select>
-        <Link href="/">Volver al login</Link>
-      </FormControl>
+          <TextField required id="name" label="Nombre" value={name} onChange={onChange} />
+        </FormControl>
+        <FormControl
+          onSubmit={onSubmit}
+          className="loginForm"
+          sx={{ m: 1, width: '25ch' }}
+        >
+          <TextField
+            required
+            id="email"
+            label="Email"
+            value={email}
+            onChange={onChange}
+          />
+        </FormControl>
+        <FormControl sx={{ m: 1, width: '25ch', height: '3rem' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+          <InputLabel htmlFor="gender">Género</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="gender"
+            value={gender}
+            onChange={handleChange}
+            label="Género"
+            required
+            placeholder="Género"
+          >
+            <MenuItem value={'Hombre'}>Hombre</MenuItem>
+            <MenuItem value={'Mujer'}>Mujer</MenuItem>
+          </Select>
 
-      <Button variant="contained" sx={{ backgroundColor: 'black' }}>
-        Register
-      </Button>
-      <OAuth />
+          <Button type="submit" variant="contained" sx={{ backgroundColor: 'black' }}>
+            Register
+          </Button>
+          <Link href="/">Volver al login</Link>
+        </FormControl>
+
+        <OAuth />
+      </form>
     </Container>
   );
 };
