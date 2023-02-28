@@ -24,27 +24,27 @@ import OAuth from '../components/OAuth';
 import { db } from '../firebase';
 
 const Register = () => {
-  const [gender, setGender] = React.useState('');
+  /* const [gender, setGender] = React.useState(''); */
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
+    gender: '',
   });
-  const { name, email, password } = formData;
+  const { name, email, password, gender } = formData;
   const [showPassword, setShowPassword] = React.useState(false);
 
+  const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const navigate = useNavigate();
-
-  const handleChange = (event) => {
+  /*  const handleChange = (event) => {
     setGender(event.target.value);
-  };
+  }; */
 
   const onChange = (e) => {
     setFormData((previousState) => ({
@@ -60,6 +60,7 @@ const Register = () => {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       updateProfile(auth.currentUser, { displayName: name });
+      updateProfile(auth.currentUser, { displayGender: gender });
       const user = userCredential.user;
       console.log(user);
       const formDataCopy = { ...formData };
@@ -129,7 +130,6 @@ const Register = () => {
             labelId="demo-simple-select-label"
             id="gender"
             value={gender}
-            onChange={handleChange}
             label="Género"
             required
             placeholder="Género"
